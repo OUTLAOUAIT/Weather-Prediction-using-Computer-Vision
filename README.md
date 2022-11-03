@@ -18,11 +18,11 @@ When OpenWeatherMap API is requested to provide weather information about a coor
 ## Model
 Using 1,902 images of the Rainbow Bridge area, we divide the dataset into training (70%) and test (30%) subsets. A portion of the training subset will be used as a validation subset for early stopping in order to prevent overfitting.
 
-The neural network is made up of 1 input layer, 2 convolutional+MaxPool layers + 1 Global Average Pooling layer + 3 dense layers, and 1 output layer (temperature).
+The neural network is a hybrid deep learning made up of a VGG16, 2 convolutional+MaxPool layers + 1 Global Average Pooling layer + 3 dense layers, and 1 output layer (temperature).
 
 The convolutional layer slides a small window across the image and extracts useful features from the image. In a commonly used example, a convolutional layer can learn to identify edges in an image. Applying MaxPool right after the convolutional layer is common practice for downsizing the output. We then apply the Global Average Pooling layer to reduce the image to a 1D vector. This 1D vector is moved through a standard 3-layered multilayer perceptron with a ReLu activation function that will give us the temperature as 1 value from the image.
 
 We use GPU acceleration on Google Colab for faster learning. The first epoch will take a relatively long time as tensors are moved to GPU, but future epochs will take a significantly shorter time and learning will be finished in less than 10 mins.
 
 ## Results
-The model reaches a Root Mean Squared Error of 1.2 °C, while the R-squared is 0.79. Not bad huh, especially considering the model is only trained using images with no additional data.
+The model reaches a Root Mean Squared Error of  0.23 °C, while the R-squared is 0.9911
